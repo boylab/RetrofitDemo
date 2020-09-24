@@ -12,9 +12,9 @@ import okhttp3.ResponseBody;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
 
-public final class MyGsonConverterFactory extends Converter.Factory {
+public final class JsonConverterFactory extends Converter.Factory {
 
-  public static MyGsonConverterFactory create() {
+  public static JsonConverterFactory create() {
     return create(new Gson());
   }
 
@@ -23,14 +23,14 @@ public final class MyGsonConverterFactory extends Converter.Factory {
    * (when no charset is specified by a header) will use UTF-8.
    */
   @SuppressWarnings("ConstantConditions") // Guarding public API nullability.
-  public static MyGsonConverterFactory create(Gson gson) {
+  public static JsonConverterFactory create(Gson gson) {
     if (gson == null) throw new NullPointerException("gson == null");
-    return new MyGsonConverterFactory(gson);
+    return new JsonConverterFactory(gson);
   }
 
   private final Gson gson;
 
-  private MyGsonConverterFactory(Gson gson) {
+  private JsonConverterFactory(Gson gson) {
     this.gson = gson;
   }
 
@@ -38,7 +38,7 @@ public final class MyGsonConverterFactory extends Converter.Factory {
   public Converter<ResponseBody, ?> responseBodyConverter(
       Type type, Annotation[] annotations, Retrofit retrofit) {
     TypeAdapter<?> adapter = gson.getAdapter(TypeToken.get(type));
-    return new MyGsonResponseBodyConverter<>(gson, adapter);
+    return new JsonResponseBodyConverter<>(gson, adapter);
   }
 
   @Override
@@ -48,6 +48,6 @@ public final class MyGsonConverterFactory extends Converter.Factory {
       Annotation[] methodAnnotations,
       Retrofit retrofit) {
     TypeAdapter<?> adapter = gson.getAdapter(TypeToken.get(type));
-    return new MyGsonRequestBodyConverter<>(gson, adapter);
+    return new JsonRequestBodyConverter<>(gson, adapter);
   }
 }

@@ -1,5 +1,7 @@
 package com.boylab.retrofitdemo.retrofit;
 
+import com.boylab.retrofitdemo.retrofit.bean.ReqDataBean;
+import com.boylab.retrofitdemo.retrofit.bean.RequestModel;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonWriter;
@@ -14,14 +16,14 @@ import okhttp3.RequestBody;
 import okio.Buffer;
 import retrofit2.Converter;
 
-final class MyGsonRequestBodyConverter<T> implements Converter<T, RequestBody> {
+final class JsonRequestBodyConverter<T> implements Converter<T, RequestBody> {
   private static final MediaType MEDIA_TYPE = MediaType.get("application/json; charset=UTF-8");
   private static final Charset UTF_8 = Charset.forName("UTF-8");
 
   private final Gson gson;
   private final TypeAdapter<T> adapter;
 
-  MyGsonRequestBodyConverter(Gson gson, TypeAdapter<T> adapter) {
+  JsonRequestBodyConverter(Gson gson, TypeAdapter<T> adapter) {
     this.gson = gson;
     this.adapter = adapter;
   }
