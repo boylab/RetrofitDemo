@@ -1,6 +1,7 @@
 package com.boylab.retrofitdemo.retrofit;
 
-import com.boylab.retrofitdemo.retrofit.bean.ReqDataBean;
+import android.util.Log;
+
 import com.boylab.retrofitdemo.retrofit.bean.RequestModel;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;

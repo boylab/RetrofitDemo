@@ -13,7 +13,7 @@ import retrofit2.http.Query;
 
 public interface RetrofitApi {
 
-    // TODO: 2020/9/23 第一种、暂不可用
+    // TODO: 2020/9/23 第一种、不可用
     @POST("LoginUser?")
     Call<ResponseModel<LoginUserResponse>> loginUser(@Body RequestModel loginUser);
 
@@ -21,8 +21,8 @@ public interface RetrofitApi {
     @POST("LoginUser?")
     Call<ResponseModel<LoginUserResponse>> loginUser1(@Query("seed") int seed, @Query("salt") int salt, @Query("uuid") String uuid, @Query("data") String data, @Query("chk") int chk);
 
-    // TODO: 2020/9/24 第三种，暂不用
+    /*// TODO: 2020/9/24 第三种，暂不可用
     @POST("LoginUser?")
-    Call<ResponseModel<LoginUserResponse>> loginUser2(@Body RequestBody requestBody);
+    Call<ResponseModel<LoginUserResponse>> loginUser2(@Body RequestBody requestBody);*/
     
 }

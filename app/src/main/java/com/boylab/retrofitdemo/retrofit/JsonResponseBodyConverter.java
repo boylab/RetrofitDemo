@@ -32,7 +32,6 @@ final class JsonResponseBodyConverter<T> implements Converter<ResponseBody, T> {
   public T convert(ResponseBody value) throws IOException {
     // 对 value 提前进行解析操作
     String response = value.string();
-    Log.i("___boylab>>>___", "convert: "+response);
     byte[] respBytes = response.getBytes();
     String json = null;
     int seed = Integer.valueOf(HexUtil.getMatchFromString(response, "\"seed\":(\\d+)"));
